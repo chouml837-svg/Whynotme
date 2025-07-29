@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book</title>
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #fffbe7;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.story-container {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.book-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.book-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.clickable-word {
+  cursor: pointer;
+  border-bottom: 1px dotted #888;
+  color: inherit;
+}
+
+.clickable-word:hover {
+  background-color: #ffefc1;
+}
+
+.popup {
+  position: absolute; 
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  max-width: 220px;
+  display: none;
+}
+
+.popup-close {
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+  margin-bottom: 5px;
+}
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+.back-button button {
+  background-color: #d2b48c; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.back-button button:hover {
+  background-color: #c19a6b;
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+
+.toast.show {
+  animation: slideDown 0.5s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="story-container">
+  <div class="book-title">The Story of an Hour</div>
+<br>
+<p id="story-text-1">Knowing that Mrs. Mallard was afflicted with a heart
+trouble,  great care was taken to break to her as gently as possible the news of
+her husband’s death.It was her sister Josephine who told her, in broken
+sentences; veiled hints that revealed in half concealing. Her husband’s friend
+Richards was there, too, near her. It was he who had been in the newspaper
+office when intelligence of the railroad disaster was received, with Brently
+Mallard’s name leading the list of “killed.” He had only taken the time to
+assure himself of its truth by a second telegram, and had hastened to forestall
+any less careful, less tender friend in bearing the sad message.</p>
+
+<p id="story-text-2">She did not hear the story as many women have heard the
+same, with a paralyzed inability to accept its significance. She wept at once,
+with sudden, wild abandonment, in her sister’s arms. When the storm of grief had
+spent itself she went away to her room alone. She would have no one follow
+her.</p>
+
+<p id="story-text-3">There stood, facing the open window, a comfortable, roomy
+armchair. Into this she sank, pressed down by a physical exhaustion that haunted
+her body and seemed to reach into her soul.She could see in the open square
+before her house the tops of trees that were all aquiver with the new spring
+life. The delicious breath of rain was in the air. In the street below a peddler
+was crying his wares. The notes of a distant song which someone was singing
+reached her faintly, and countless sparrows were twittering in the leaves</p>
+
+<p id="story-text-4">There were patches of blue sky showing here and there
+through the clouds that had met and piled one above the other in the west facing
+her window. She sat with her head thrown back upon the cushion of the chair,
+quite motionless, except when a sob came up into her throat and shook her, as a
+child who has cried itself to sleep continues to sob in its dreams.</p>
+
+<p id="story-text-5">She was young, with a fair, calm face, whose lines bespoke
+repression and even a certain strength. But now there was a dull stare in her
+eyes, whose gaze was fixed away off yonder on one of those patches of blue sky.
+It was not a glance of reflection, but rather indicated a suspension of
+intelligent thought.</p>
+
+<p id="story-text-6">There was something coming to her and she was waiting for
+it, fearfully. What was it? She did not know; it was too subtle and elusive to
+name. But she felt it, creeping out of the sky, reaching toward her through the
+sounds, the scents, the color that filled the air. </p>
+
+<p id="story-text-7">Now her bosom rose and fell tumultuously. She was beginning
+to recognize this thing that was approaching to possess her, and she was
+striving to beat it back with her will—as powerless as her two white slender
+hands would have been. When she abandoned herself a little whispered word
+escaped her slightly parted lips. She said it over and over under her breath:
+“free, free, free!” The vacant stare and the look of terror that had followed it
+went from her eyes. They stayed keen and bright. Her pulses beat fast, and the
+coursing blood warmed and relaxed every inch of her body.</p>
+
+<p id="story-text-8">She did not stop to ask if it were or were not a monstrous
+joy that held her. A clear and exalted perception enabled her to dismiss the
+suggestion as trivial. She knew that she would weep again when she saw the kind,
+tender hands folded in death; the face that had never looked save with love upon
+her, fixed and gray and dead. But she saw beyond that bitter moment a long
+procession of years to come that would belong to her absolutely. And she opened
+and spread her arms out to them in welcome.</p>
+
+<p id="story-text-9">There would be no one to live for during those coming
+years; she would live for herself. There would be no powerful will bending hers
+in that blind persistence with which men and women believe they have a right to
+impose a private will upon a fellow creature. A kind intention or a cruel
+intention made the act seem no less a crime as she looked upon it in that brief
+moment of illumination.</p>
+
+<p id="story-text-10">And yet she had loved him—sometimes. Often she had not. What did it matter! What could love, the unsolved mystery, count for in the face of this possession of self-assertion which she suddenly recognized as the strongest impulse of her being!
+</p>
+
+<p id="story-text-11">“Go away. I am not making myself ill.” No; she was
+drinking in a very elixir of life1 through that open window.Her fancy was
+running riot along those days ahead of her. Spring days, and summer days, and
+all sorts of days that would be her own. She breathed a quick prayer that life
+might be long. It was only yesterday she had thought with a shudder that life
+might be long.</p>
+
+<p id="story-text-12">She arose at length and opened the door to her sister’s
+importunities. There was a feverish triumph in her eyes, and she carried herself
+unwittingly like a goddess of Victory. She clasped her sister’s waist, and
+together they descended the stairs. Richards stood waiting for them at the
+bottom.</p>
+
+<p id="story-text-13">Someone was opening the front door with a latchkey. It was Brently Mallard who entered, a little travel-stained, composedly carrying his gripsack2 and umbrella. He had been far from the scene of the accident, and did not even know there had been one. He stood amazed at Josephine’s piercing cry; at 
+</p>
+
+<p id="story-text-14">Richards’ quick motion to screen him from the view of his wife.
+But Richards was too late. When the doctors came they said she had died of heart
+disease—of the joy that kills.</p>
+
+<p id="story-text-15"></p>
+
+<p id="story-text-16"></p>
+
+<p id="story-text-17"></p>
+
+<p id="story-text-18"></p>
+
+<p id="story-text-19"></p>
+
+<p id="story-text-20"></p>
+
+<p id="story-text-21"></p>
+
+<p id="story-text-22"></p>
+
+<p id="story-text-23"></p>
+
+<p id="story-text-24"></p>
+
+<p id="story-text-25"></p>
+
+<p id="story-text-26"></p>
+
+<p id="story-text-27"></p>
+
+<p id="story-text-28"></p>
+
+<p id="story-text-29"></p>
+
+<p id="story-text-30"></p>
+
+<p id="story-text-31"></p>
+
+<p id="story-text-32"></p>
+
+<p id="story-text-33"></p>
+
+<p id="story-text-34"></p>
+
+<p id="story-text-35"></p>
+
+<p id="story-text-36"></p>
+
+<p id="story-text-37"></p>
+
+<p id="story-text-38"></p>
+
+<p id="story-text-39"></p>
+
+<p id="story-text-40"></p>
+
+<p id="story-text-41"></p>
+
+<p id="story-text-42"></p>
+
+<p id="story-text-43"></p>
+
+<p id="story-text-44"></p>
+
+<p id="story-text-45"></p>
+
+<p id="story-text-46"></p>
+
+<p id="story-text-47"></p>
+
+<p id="story-text-48"></p>
+
+<p id="story-text-49"></p>
+
+<p id="story-text-50"></p>
+
+<p id="story-text-51"></p>
+
+<p id="story-text-52"></p>
+
+<p id="story-text-53"></p>
+
+<p id="story-text-54"></p>
+
+<p id="story-text-55"></p>
+
+<p id="story-text-56"></p>
+
+<p id="story-text-57"></p>
+
+<p id="story-text-58"></p>
+
+<p id="story-text-59"></p>
+
+<p id="story-text-60"></p>
+
+<p id="story-text-61"></p>
+
+<p id="story-text-62"></p>
+
+<p id="story-text-63"></p>
+
+<p id="story-text-64"></p>
+<p id="story-text-65"></p>
+<p id="story-text-66"></p>
+<p id="story-text-67"></p>
+<p id="story-text-68"></p>
+<p id="story-text-69"></p>
+<p id="story-text-70"></p>
+<p id="story-text-71"></p>
+<p id="story-text-72"></p>
+<p id="story-text-73"></p>
+<p id="story-text-74"></p>
+<p id="story-text-75"></p>
+<p id="story-text-76"></p>
+<p id="story-text-77"></p>
+<p id="story-text-78"></p>
+<p id="story-text-79"></p>
+<p id="story-text-80"></p>
+<p id="story-text-81"></p>
+<p id="story-text-82"></p>
+<p id="story-text-83"></p>
+<p id="story-text-84"></p>
+<p id="story-text-85"></p>
+<p id="story-text-86"></p>
+<p id="story-text-87"></p>
+<p id="story-text-88"></p>
+<p id="story-text-89"></p>
+<p id="story-text-90"></p>
+<p id="story-text-91"></p>
+<p id="story-text-92"></p>
+<p id="story-text-93"></p>
+<p id="story-text-94"></p>
+<p id="story-text-95"></p>
+<p id="story-text-96"></p>
+<p id="story-text-97"></p>
+<p id="story-text-98"></p>
+<p id="story-text-99"></p>
+<p id="story-text-100"></p>
+</p>
+
+
+
+</div>
+
+<div id="toast" class="toast">Book recorded</div>
+
+<div id="popup" class="popup" style="display: none;">
+  <div class="popup-close" onclick="closePopup()">×</div>
+  <div id="popup-text">Loading...</div>
+</div>
+<div class="back-button">
+  <button onclick="window.location.href='file3.html'">← Back</button>
+</div>
+<script>
+  const title = "Deadstar";
+  const image = "deadstar.jpeg";
+  const start = Date.now();
+  const activeUser = localStorage.getItem("activeUser");
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let i = 1; i <= 100; i++) {
+      const storyEl = document.getElementById(`story-text-${i}`);
+      if (!storyEl) continue;
+
+      const originalText = storyEl.innerText;
+
+      function makeWordsClickable(text) {
+        return text.split(/(\s+)/).map(word => {
+          if (word.trim() === "") return word;
+          const clean = word.replace(/[.,!?":;()]/g, "");
+          return `<span class="clickable-word" data-word="${clean}">${word}</span>`;
+        }).join("");
+      }
+
+      storyEl.innerHTML = makeWordsClickable(originalText);
+    }
+
+    document.querySelectorAll(".clickable-word").forEach(word => {
+      word.addEventListener("click", async (e) => {
+        const rawWord = e.target.dataset.word.toLowerCase();
+        const popup = document.getElementById("popup");
+        const popupText = document.getElementById("popup-text");
+
+        popupText.textContent = `Searching "${rawWord}"...`;
+        popup.style.display = "block";
+
+        const popupWidth = popup.offsetWidth;
+        const pageX = e.pageX;
+        const pageY = e.pageY - 60;
+
+        if (pageX + popupWidth > window.innerWidth) {
+          popup.style.left = `${window.innerWidth - popupWidth - 10}px`;
+        } else {
+          popup.style.left = `${pageX}px`;
+        }
+
+        if (window.innerWidth < 400) {
+          popup.style.left = "10px";
+          popup.style.right = "10px";
+        }
+
+        popup.style.top = `${pageY}px`;
+
+        try {
+          const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${rawWord}`);
+          const data = await res.json();
+
+          if (Array.isArray(data)) {
+            const meaning = data[0]?.meanings[0]?.definitions[0]?.definition;
+            popupText.textContent = `"${rawWord}" means: ${meaning}`;
+          } else {
+            popupText.textContent = `No definition found for "${rawWord}".`;
+          }
+        } catch (error) {
+          popupText.textContent = `Error getting meaning.`;
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const popup = document.getElementById("popup");
+      if (!popup.contains(e.target) && !e.target.classList.contains("clickable-word")) {
+        popup.style.display = "none";
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.getElementById("popup").style.display = "none";
+      }
+    });
+  });
+
+  setTimeout(() => {
+    const timeSpent = Date.now() - start;
+
+    if (timeSpent >= 20000 && activeUser && users[activeUser]) {
+      const userData = users[activeUser];
+      userData.booksRead = userData.booksRead || [];
+
+      const alreadyExists = userData.booksRead.some(book => book.title === title);
+      if (!alreadyExists) {
+        userData.booksRead.push({ title, image: image });
+        users[activeUser] = userData;
+        localStorage.setItem("users", JSON.stringify(users));
+
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        toast.style.opacity = "1";
+
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          setTimeout(() => {
+            toast.style.display = "none";
+            toast.style.opacity = "1";
+          }, 1000);
+        }, 3000);
+      }
+    }
+  }, 20000);
+
+  window.addEventListener("beforeunload", () => {
+    const end = Date.now();
+    const readingTime = end - start;
+
+    if (activeUser && users[activeUser]) {
+      users[activeUser].totalReadingTime = (users[activeUser].totalReadingTime || 0) + readingTime;
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  });
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

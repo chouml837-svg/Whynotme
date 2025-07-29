@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f8f1e4;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    textarea {
+      width: 95%;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
+    .options label {
+      background-color: #e6d3b3;
+      display: block;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      border-radius: 5px;
+      font-weight: normal;
+    }
+
+    .options input[type="radio"] {
+      display: none;
+    }
+
+    .options input[type="radio"]:checked + label {
+      transform: translateY(-4px);
+      background-color: #d4b78c;
+    }
+
+    #resultOverlay {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 20px;
+      border-radius: 10px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 1001;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .blur-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>“The Necklace” Quiz</h2>
+
+  <div id="blurOverlay" class="blur-overlay"></div>
+
+  <div id="resultOverlay">
+    <div id="resultBox"></div>
+    <button id="finishBtn" onclick="window.location.reload()">Finish & Retake Quiz</button>
+    <button onclick="window.location.href='quiz.html'" class="btn-secondary">Go Back</button>
+  </div>
+
+  <form id="quizForm">
+    <div class="question">
+      <label>1. What item does Madame Loisel borrow for the party?</label>
+      <div class="options">
+        <input type="radio" id="q1a" name="q1" value="A" /><label for="q1a">A. Earrings</label>
+        <input type="radio" id="q1b" name="q1" value="B" /><label for="q1b">B. Necklace</label>
+        <input type="radio" id="q1c" name="q1" value="C" /><label for="q1c">C. Bracelet</label>
+        <input type="radio" id="q1d" name="q1" value="D" /><label for="q1d">D. Ring</label>
+      </div>
+    </div>
+
+
+    <div class="question">
+      <label>2. What is Madame Loisel’s main desire in life?</label>
+      <div class="options">
+        <input type="radio" id="q2a" name="q2" value="A" /><label for="q2a">A. To be a teacher</label>
+        <input type="radio" id="q2b" name="q2" value="B" /><label for="q2b">B. To become rich</label>
+        <input type="radio" id="q2c" name="q2" value="C" /><label for="q2c">C. To attend school</label>
+        <input type="radio" id="q2d" name="q2" value="D" /><label for="q2d">D. To travel the world</label>
+      </div>
+    </div>
+
+
+    <div class="question">
+      <label>3. How long did Madame Loisel and her husband work to pay off the necklace?</label>
+      <div class="options">
+        <input type="radio" id="q3a" name="q3" value="A" /><label for="q3a">A. 2 years</label>
+        <input type="radio" id="q3b" name="q3" value="B" /><label for="q3b">B. 5 years</label>
+        <input type="radio" id="q3c" name="q3" value="C" /><label for="q3c">C. 10 years</label>
+        <input type="radio" id="q3d" name="q3" value="D" /><label for="q3d">D. 12 years</label>
+      </div>
+    </div>
+
+
+    <div class="question">
+      <label>4. What is the cause of the Loisel family’s hardship?</label>
+      <div class="options">
+        <input type="radio" id="q4a" name="q4" value="A" /><label for="q4a">A. A failed business</label>
+        <input type="radio" id="q4b" name="q4" value="B" /><label for="q4b">B. Madame Loisel’s illness</label>
+        <input type="radio" id="q4c" name="q4" value="C" /><label for="q4c">C. The replacement of the necklace</label>
+        <input type="radio" id="q4d" name="q4" value="D" /><label for="q4d">D. Unpaid taxes</label>
+      </div>
+    </div>
+    
+    <div class="question">
+      <label>5. What is the twist ending of the story?</label>
+      <div class="options">
+        <input type="radio" id="q5a" name="q5" value="A" /><label for="q5a">A. The necklace was fake</label>
+        <input type="radio" id="q5b" name="q5" value="B" /><label for="q5b">B. Madame Loisel was dreaming</label>
+        <input type="radio" id="q5c" name="q5" value="C" /><label for="q5c">C. Madame Forestier stole the necklace</label>
+        <input type="radio" id="q5d" name="q5" value="D" /><label for="q5d">D. The necklace was returned secretly</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label for="q6">6. Why was Madame Loisel unhappy with her life at the beginning of the story?</label>
+      <textarea id="q6"></textarea>
+    </div>
+
+    <div class="question">
+      <label for="q7">7. How does Madame Loisel feel after attending the party?</label>
+      <textarea id="q7"></textarea>
+    </div>
+
+    <div class="question">
+      <label for="q8">8. What sacrifices did the Loisel couple make to repay their debt?</label>
+      <textarea id="q8"></textarea>
+    </div>
+
+    <div class="question">
+      <label for="q9">9. How does the ending of the story reflect irony?</label>
+      <textarea id="q9"></textarea>
+    </div>
+
+    <div class="question">
+      <label for="q10">10. What moral lesson can be learned from “The Necklace”?</label>
+      <textarea id="q10"></textarea>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+
+<script>
+  const answers = {
+    q1: "B",
+    q2: "B",
+    q3: "C",
+    q4: "C",
+    q5: "A"
+  };
+
+  const openAnswers = {
+    q6: "She was unhappy with her modest life and dreamed of wealth and luxury.",
+    q7: "She felt beautiful and admired, enjoying the attention.",
+    q8: "They lived in poverty, worked hard, and gave up comfort to repay the debt.",
+    q9: "It was ironic because the necklace they replaced was actually fake.",
+    q10: "The story teaches honesty and the dangers of vanity and pride."
+  };
+
+  function stringSimilarity(a, b) {
+    const wordsA = a.toLowerCase().split(/\W+/).filter(Boolean);
+    const wordsB = b.toLowerCase().split(/\W+/).filter(Boolean);
+    const matches = wordsA.filter(word => wordsB.includes(word));
+    return matches.length / Math.max(wordsA.length, 1);
+  }
+
+  function submitQuiz() {
+    let score = 0;
+    let feedback = [];
+    let openScores = {};
+
+    for (let i = 1; i <= 5; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selected) {
+        localStorage.setItem(`q${i}`, selected.value);
+      }
+    }
+
+    for (let i = 6; i <= 10; i++) {
+      const text = document.getElementById(`q${i}`).value.trim();
+      localStorage.setItem(`q${i}`, text);
+    }
+
+    for (let i = 1; i <= 5; i++) {
+      const userAnswer = localStorage.getItem(`q${i}`);
+      const correct = answers[`q${i}`];
+      if (userAnswer === correct) {
+        score++;
+        feedback.push(`Q${i}: ✅ Correct`);
+      } else {
+        feedback.push(`Q${i}: ❌ Incorrect (Correct: ${correct})`);
+      }
+    }
+
+    for (let i = 6; i <= 10; i++) {
+      const userInput = localStorage.getItem(`q${i}`) || "";
+      const correct = openAnswers[`q${i}`];
+      let rate10 = 0;
+      let score5 = 0;
+
+      if (userInput.trim().length > 5) {
+        const similarity = stringSimilarity(userInput, correct);
+        rate10 = Math.round(similarity * 10);
+        score5 = Math.round(similarity * 5);
+        score += score5 / 5;
+      }
+
+      feedback.push(`Q${i}: Similarity ${rate10}/10 ➜ Score: ${score5}/5`);
+      openScores[`q${i}_score`] = score5;
+    }
+
+    const finalScore = Math.round(score * 10) / 10;
+    localStorage.setItem("userScore", finalScore);
+
+    const activeUser = localStorage.getItem("activeUser");
+    let allScores = JSON.parse(localStorage.getItem("quizScores") || "{}");
+
+    if (activeUser) {
+      if (!allScores[activeUser]) {
+        allScores[activeUser] = [];
+      }
+      allScores[activeUser].push(finalScore);
+      localStorage.setItem("quizScores", JSON.stringify(allScores));
+    }
+
+    Object.keys(openScores).forEach(key => {
+      localStorage.setItem(key, openScores[key]);
+    });
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.innerHTML = `<h3>Your Total Score: ${finalScore}/10</h3>`;
+    feedback.forEach(line => {
+      const p = document.createElement("p");
+      p.textContent = line;
+      resultBox.appendChild(p);
+    });
+
+    document.getElementById("blurOverlay").style.display = "block";
+    document.getElementById("resultOverlay").style.display = "block";
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #fff7f0, #fbe4c8);
+      color: #333;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #5c2d00;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #5c2d00;
+      font-weight: 500;
+      font-size: 15px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .navbar a.active,
+    .navbar a:hover {
+      background-color: #5c2d00;
+      color: white;
+    }
+
+    .home {
+      text-align: center;
+    }
+
+    .profile img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid #d3b38c;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .intro h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .intro h2 span {
+      color: #8a4f1d;
+    }
+
+    .intro h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #c2822d;
+      font-weight: bold;
+    }
+
+    .intro p {
+      font-size: 14px;
+      max-width: 400px;
+      margin: 0 auto 15px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      font-size: 24px;
+      color: #5c2d00;
+      transition: transform 0.2s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="logo">Contact Us</div>
+    <nav class="navbar">
+      <a href="#" onclick="loadProfile('Rap', event)" class="active">Rap</a>
+      <a href="#" onclick="loadProfile('Kris', event)">Kris</a>
+      <a href="#" onclick="loadProfile('Carl', event)">Carl</a>
+      <a href="#" onclick="loadProfile('Melmar', event)">Melmar</a>
+    </nav>
+  </div>
+
+  <section class="home">
+    <div class="profile">
+      <img id="profileImage" src="1.jpeg" alt="Profile Picture">
+    </div>
+    <div class="intro">
+      <h2>Hey I'm <span id="profileName">Rap</span></h2>
+      <h3>I'm a <span class="highlight" id="titleText">Developer</span></h3>
+      <p id="profileDesc">I love creating websites and sharing my journey with people. Let’s connect!</p>
+      <div class="social-icons">
+        <a id="fbLink" href="https://www.facebook.com/john.jereza.75" target="_blank"><i class='bx bxl-facebook'></i></a>
+        <a id="emailLink" href="mailto:rap@gmail.com"><i class='bx bx-envelope'></i></a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const profiles = {
+      Rap: {
+        img: 'rap.jpg',
+        name: 'Rap',
+        desc: "I love creating websites and sharing my journey with people. Let’s connect!",
+        titles: ["leader", "Pogi lang baka rap yan"],
+        fb: 'https://www.facebook.com/john.jereza.75',
+        email: 'johnmagboo01@gmail.com'
+      },
+      Kris: {
+        img: '2.jpeg',
+        name: 'Kris',
+        desc: "I'm Kris, a UI/UX enthusiast who enjoys bringing creativity into simple user experiences.",
+        titles: ["UI/UX Designer", "Creative Mind"],
+        fb: 'https://www.facebook.com/kris.quilang.2024B',
+        email: 'kris@gmail.com'
+      },
+      Carl: {
+        img: '3.jpeg',
+        name: 'Carl',
+        desc: "Hi, I'm Carl. I enjoy building smart solutions and exploring innovative tech.",
+        titles: ["Coder", "Builder"],
+        fb: 'https://www.facebook.com/carljustin.parungao.9',
+        email: 'carl@gmail.com'
+      },
+      Melmar: {
+        img: '4.jpeg',
+        name: 'Melmar',
+        desc: "Passionate about development and design. Always learning, always improving.",
+        titles: ["Web Developer", "Gamer"],
+        fb: 'https://www.facebook.com/just.some.nobody',
+        email: 'melmar@gmail.com'
+      }
+    };
+
+    let titleIndex = 0;
+    let titleInterval;
+    let currentTitles = profiles["Rap"].titles;
+
+    function rotateTitles() {
+      clearInterval(titleInterval);
+      document.getElementById("titleText").innerText = currentTitles[0];
+      titleIndex = 1;
+
+      titleInterval = setInterval(() => {
+        document.getElementById("titleText").innerText = currentTitles[titleIndex];
+        titleIndex = (titleIndex + 1) % currentTitles.length;
+      }, 3500);
+    }
+
+    function loadProfile(name, event) {
+      if (event) event.preventDefault();
+
+      const profile = profiles[name];
+      document.getElementById("profileImage").src = profile.img;
+      document.getElementById("profileName").innerText = profile.name;
+      document.getElementById("profileDesc").innerText = profile.desc;
+      currentTitles = profile.titles;
+      rotateTitles();
+
+      document.getElementById("fbLink").href = profile.fb;
+      document.getElementById("emailLink").href = `mailto:${profile.email}`;
+
+      document.querySelectorAll(".navbar a").forEach(link => link.classList.remove("active"));
+      if (event?.target) event.target.classList.add("active");
+    }
+
+    rotateTitles();
+  </script>
+
+</body>
+</html>

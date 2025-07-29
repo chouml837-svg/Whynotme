@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f8f1e4;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    textarea {
+      width: 95%;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
+    .options label {
+      background-color: #e6d3b3;
+      display: block;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      border-radius: 5px;
+      font-weight: normal;
+    }
+
+    .options input[type="radio"] {
+      display: none;
+    }
+
+    .options input[type="radio"]:checked + label {
+      transform: translateY(-4px);
+      background-color: #d4b78c;
+    }
+
+    #resultOverlay {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 20px;
+      border-radius: 10px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 1001;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .blur-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+<h2>“How My Brother Leon Brought Home a Wife” Quiz</h2>
+
+<div id="blurOverlay" class="blur-overlay"></div>
+
+<div id="resultOverlay">
+  <div id="resultBox"></div>
+  <button id="finishBtn" onclick="window.location.reload()">Finish & Retake Quiz</button>
+  <button onclick="window.location.href='quiz.html'" class="btn-secondary">Go Back</button>
+</div>
+
+<form id="quizForm">
+  <div class="question">
+    <label>1. Who narrates the story?</label>
+    <div class="options">
+      <input type="radio" id="q1a" name="q1" value="A" /><label for="q1a">A. Leon</label>
+      <input type="radio" id="q1b" name="q1" value="B" /><label for="q1b">B. Baldo</label>
+      <input type="radio" id="q1c" name="q1" value="C" /><label for="q1c">C. The father</label>
+      <input type="radio" id="q1d" name="q1" value="D" /><label for="q1d">D. Maria</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>2. Where did Maria come from before visiting Leon's family?</label>
+    <div class="options">
+      <input type="radio" id="q2a" name="q2" value="A" /><label for="q2a">A. Barrio Nagrebcan</label>
+      <input type="radio" id="q2b" name="q2" value="B" /><label for="q2b">B. Ilocos</label>
+      <input type="radio" id="q2c" name="q2" value="C" /><label for="q2c">C. The city</label>
+      <input type="radio" id="q2d" name="q2" value="D" /><label for="q2d">D. A nearby village</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>3. What was the father's test for Maria?</label>
+    <div class="options">
+      <input type="radio" id="q3a" name="q3" value="A" /><label for="q3a">A. Cooking for the family</label>
+      <input type="radio" id="q3b" name="q3" value="B" /><label for="q3b">B. Asking her to walk through fields</label>
+      <input type="radio" id="q3c" name="q3" value="C" /><label for="q3c">C. Letting her ride the cart through the back road</label>
+      <input type="radio" id="q3d" name="q3" value="D" /><label for="q3d">D. Asking her to carry water from the well</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>4. What trait did Maria show during the journey?</label>
+    <div class="options">
+      <input type="radio" id="q4a" name="q4" value="A" /><label for="q4a">A. Complaining often</label>
+      <input type="radio" id="q4b" name="q4" value="B" /><label for="q4b">B. Arrogance</label>
+      <input type="radio" id="q4c" name="q4" value="C" /><label for="q4c">C. Patience and grace</label>
+      <input type="radio" id="q4d" name="q4" value="D" /><label for="q4d">D. Disrespect</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>5. What does the story mainly highlight?</label>
+    <div class="options">
+      <input type="radio" id="q5a" name="q5" value="A" /><label for="q5a">A. Conflict between rich and poor</label>
+      <input type="radio" id="q5b" name="q5" value="B" /><label for="q5b">B. The journey to find true love</label>
+      <input type="radio" id="q5c" name="q5" value="C" /><label for="q5c">C. Acceptance of someone into a traditional family</label>
+      <input type="radio" id="q5d" name="q5" value="D" /><label for="q5d">D. The beauty of the countryside</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label for="q6">6. How did Baldo feel about Maria when he first met her?</label>
+    <textarea id="q6" name="q6"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q7">7. Why do you think the father made Maria take the long route?</label>
+    <textarea id="q7" name="q7"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q8">8. What can we say about Maria based on her actions during the trip?</label>
+    <textarea id="q8" name="q8"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q9">9. How does the setting help in showing the cultural differences between city and rural life?</label>
+    <textarea id="q9" name="q9"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q10">10. What lesson does the story teach about love, family, and acceptance?</label>
+    <textarea id="q10" name="q10"></textarea>
+  </div>
+</form>
+    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+
+<script>const answers = {
+  q1: "B",
+  q2: "C",
+  q3: "C",
+  q4: "C",
+  q5: "C"
+};
+
+const openAnswers = {
+  q6: "The story’s title is ironic because it emphasizes Leon, but it is really about Maria adjusting to rural life.",
+  q7: "The author uses the journey and the countryside to reflect the emotional tension and Maria’s quiet determination.",
+  q8: "It shows Maria’s willingness to adapt to a new environment, a sign of true love.",
+  q9: "It’s a twist because the story focuses on Leon, but the real test is for Maria.",
+  q10: "Maria was understanding and showed strength, not selfishness. She embraced a difficult change with grace."
+};
+
+  function stringSimilarity(a, b) {
+    const wordsA = a.toLowerCase().split(/\W+/).filter(Boolean);
+    const wordsB = b.toLowerCase().split(/\W+/).filter(Boolean);
+    const matches = wordsA.filter(word => wordsB.includes(word));
+    return matches.length / Math.max(wordsA.length, 1);
+  }
+
+  function submitQuiz() {
+    let score = 0;
+    let feedback = [];
+    let openScores = {};
+
+    for (let i = 1; i <= 5; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selected) {
+        localStorage.setItem(`q${i}`, selected.value);
+      }
+    }
+
+    for (let i = 6; i <= 10; i++) {
+      const text = document.getElementById(`q${i}`).value.trim();
+      localStorage.setItem(`q${i}`, text);
+    }
+
+    for (let i = 1; i <= 5; i++) {
+      const userAnswer = localStorage.getItem(`q${i}`);
+      const correct = answers[`q${i}`];
+      if (userAnswer === correct) {
+        score++;
+        feedback.push(`Q${i}: ✅ Correct`);
+      } else {
+        feedback.push(`Q${i}: ❌ Incorrect (Correct: ${correct})`);
+      }
+    }
+
+    for (let i = 6; i <= 10; i++) {
+      const userInput = localStorage.getItem(`q${i}`) || "";
+      const correct = openAnswers[`q${i}`];
+      let rate10 = 0;
+      let score5 = 0;
+
+      if (userInput.trim().length > 5) {
+        const similarity = stringSimilarity(userInput, correct);
+        rate10 = Math.round(similarity * 10);
+        score5 = Math.round(similarity * 5);
+        score += score5 / 5;
+      }
+
+      feedback.push(`Q${i}: Similarity ${rate10}/10 ➜ Score: ${score5}/5`);
+      openScores[`q${i}_score`] = score5;
+    }
+
+    const finalScore = Math.round(score * 10) / 10;
+    localStorage.setItem("userScore", finalScore);
+
+    const activeUser = localStorage.getItem("activeUser");
+    let allScores = JSON.parse(localStorage.getItem("quizScores") || "{}");
+
+    if (activeUser) {
+      if (!allScores[activeUser]) {
+        allScores[activeUser] = [];
+      }
+      allScores[activeUser].push(finalScore);
+      localStorage.setItem("quizScores", JSON.stringify(allScores));
+    }
+
+    Object.keys(openScores).forEach(key => {
+      localStorage.setItem(key, openScores[key]);
+    });
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.innerHTML = `<h3>Your Total Score: ${finalScore}/10</h3>`;
+    feedback.forEach(line => {
+      const p = document.createElement("p");
+      p.textContent = line;
+      resultBox.appendChild(p);
+    });
+
+    document.getElementById("blurOverlay").style.display = "block";
+    document.getElementById("resultOverlay").style.display = "block";
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>intro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      width: 400vw;
+      height: 100vh;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      width: 100%;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ccc;
+    }
+
+    .dot.active {
+      background-color: #2196f3;
+    }
+
+    .next-btn {
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .next-btn:hover {
+      background-color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider" id="slider">
+  <div class="slide" style="background-image: url('front1.jpeg')"></div>
+  <div class="slide" style="background-image: url('front2.jpeg')"></div>
+  <div class="slide" style="background-image: url('front3.jpeg')"></div>
+</div>
+
+<div class="bottom-bar">
+  <div class="dots" id="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <button class="next-btn" onclick="goNext()">NEXT</button>
+</div>
+
+<script>
+  let currentSlide = 0;
+
+  function goNext() {
+    const slider = document.getElementById("slider");
+    const dots = document.querySelectorAll(".dot");
+
+    if (currentSlide < 2) {
+      currentSlide++;
+      slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[currentSlide].classList.add("active");
+    } else {
+      window.location.href = "Structure.html"; 
+    }
+  }
+</script>
+
+</body>
+</html>

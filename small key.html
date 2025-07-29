@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f8f1e4;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    textarea {
+      width: 95%;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
+    .options label {
+      background-color: #e6d3b3;
+      display: block;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      border-radius: 5px;
+      font-weight: normal;
+    }
+
+    .options input[type="radio"] {
+      display: none;
+    }
+
+    .options input[type="radio"]:checked + label {
+      transform: translateY(-4px);
+      background-color: #d4b78c;
+    }
+
+    #resultOverlay {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 20px;
+      border-radius: 10px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 1001;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .blur-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+<h2>“The Small Key” Quiz</h2>
+
+<div id="blurOverlay" class="blur-overlay"></div>
+
+<div id="resultOverlay">
+  <div id="resultBox"></div>
+  <button id="finishBtn" onclick="window.location.reload()">Finish & Retake Quiz</button>
+  <button onclick="window.location.href='quiz.html'" class="btn-secondary">Go Back</button>
+</div>
+
+<form id="quizForm">
+  <div class="question">
+    <label>1. Who is the husband in the story?</label>
+    <div class="options">
+      <input type="radio" id="q1a" name="q1" value="A" /><label for="q1a">A. Pedro</label>
+      <input type="radio" id="q1b" name="q1" value="B" /><label for="q1b">B. Julian</label>
+      <input type="radio" id="q1c" name="q1" value="C" /><label for="q1c">C. Tomas</label>
+      <input type="radio" id="q1d" name="q1" value="D" /><label for="q1d">D. Andres</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>2. What does the small key unlock?</label>
+    <div class="options">
+      <input type="radio" id="q2a" name="q2" value="A" /><label for="q2a">A. A chest with money</label>
+      <input type="radio" id="q2b" name="q2" value="B" /><label for="q2b">B. A jewelry box</label>
+      <input type="radio" id="q2c" name="q2" value="C" /><label for="q2c">C. A trunk containing Pedro’s first wife’s belongings</label>
+      <input type="radio" id="q2d" name="q2" value="D" /><label for="q2d">D. A box of family photos</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>3. What emotion does Soledad feel when she sees what's inside the trunk?</label>
+    <div class="options">
+      <input type="radio" id="q3a" name="q3" value="A" /><label for="q3a">A. Joy</label>
+      <input type="radio" id="q3b" name="q3" value="B" /><label for="q3b">B. Confusion</label>
+      <input type="radio" id="q3c" name="q3" value="C" /><label for="q3c">C. Jealousy</label>
+      <input type="radio" id="q3d" name="q3" value="D" /><label for="q3d">D. Anger</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>4. What symbolizes trust and secrecy in the story?</label>
+    <div class="options">
+      <input type="radio" id="q4a" name="q4" value="A" /><label for="q4a">A. The door</label>
+      <input type="radio" id="q4b" name="q4" value="B" /><label for="q4b">B. The key</label>
+      <input type="radio" id="q4c" name="q4" value="C" /><label for="q4c">C. The ring</label>
+      <input type="radio" id="q4d" name="q4" value="D" /><label for="q4d">D. The letter</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>5. What is the main theme of “The Small Key”?</label>
+    <div class="options">
+      <input type="radio" id="q5a" name="q5" value="A" /><label for="q5a">A. Financial struggle</label>
+      <input type="radio" id="q5b" name="q5" value="B" /><label for="q5b">B. Love and betrayal</label>
+      <input type="radio" id="q5c" name="q5" value="C" /><label for="q5c">C. Trust and emotional insecurity in relationships</label>
+      <input type="radio" id="q5d" name="q5" value="D" /><label for="q5d">D. Superstition</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label for="q6">6. Why did Pedro keep his late wife’s belongings locked away?</label>
+    <textarea id="q6"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q7">7. How does Soledad react upon discovering what the small key opens?</label>
+    <textarea id="q7"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q8">8. What does the small key symbolize in the story?</label>
+    <textarea id="q8"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q9">9. Do you think Pedro was wrong for not telling Soledad about the trunk? Why or why not?</label>
+    <textarea id="q9"></textarea>
+  </div>
+
+  <div class="question">
+    <label for="q10">10. What is the story’s message about marriage and trust?</label>
+    <textarea id="q10"></textarea>
+  </div>
+
+    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+<script>const answers = {
+  q1: "A",
+  q2: "C",
+  q3: "C",
+  q4: "B",
+  q5: "C"
+};
+
+const openAnswers = {
+  q6: "Pedro kept his late wife’s belongings locked away as a way of preserving her memory and possibly out of unresolved emotions.",
+  q7: "Soledad reacts with jealousy and quiet emotional pain, feeling betrayed or compared to the first wife.",
+  q8: "The small key symbolizes secrets, trust, and emotional distance in their marriage.",
+  q9: "Yes, because hiding things in a marriage can damage trust. But others may argue he just couldn’t let go of the past.",
+  q10: "It teaches that trust and openness are essential in marriage, and emotional secrecy can lead to conflict and hurt."
+};
+  function stringSimilarity(a, b) {
+    const wordsA = a.toLowerCase().split(/\W+/).filter(Boolean);
+    const wordsB = b.toLowerCase().split(/\W+/).filter(Boolean);
+    const matches = wordsA.filter(word => wordsB.includes(word));
+    return matches.length / Math.max(wordsA.length, 1);
+  }
+
+  function submitQuiz() {
+    let score = 0;
+    let feedback = [];
+    let openScores = {};
+
+    for (let i = 1; i <= 5; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selected) {
+        localStorage.setItem(`q${i}`, selected.value);
+      }
+    }
+
+    for (let i = 6; i <= 10; i++) {
+      const text = document.getElementById(`q${i}`).value.trim();
+      localStorage.setItem(`q${i}`, text);
+    }
+
+    for (let i = 1; i <= 5; i++) {
+      const userAnswer = localStorage.getItem(`q${i}`);
+      const correct = answers[`q${i}`];
+      if (userAnswer === correct) {
+        score++;
+        feedback.push(`Q${i}: ✅ Correct`);
+      } else {
+        feedback.push(`Q${i}: ❌ Incorrect (Correct: ${correct})`);
+      }
+    }
+
+    for (let i = 6; i <= 10; i++) {
+      const userInput = localStorage.getItem(`q${i}`) || "";
+      const correct = openAnswers[`q${i}`];
+      let rate10 = 0;
+      let score5 = 0;
+
+      if (userInput.trim().length > 5) {
+        const similarity = stringSimilarity(userInput, correct);
+        rate10 = Math.round(similarity * 10);
+        score5 = Math.round(similarity * 5);
+        score += score5 / 5;
+      }
+
+      feedback.push(`Q${i}: Similarity ${rate10}/10 ➜ Score: ${score5}/5`);
+      openScores[`q${i}_score`] = score5;
+    }
+
+    const finalScore = Math.round(score * 10) / 10;
+    localStorage.setItem("userScore", finalScore);
+
+    const activeUser = localStorage.getItem("activeUser");
+    let allScores = JSON.parse(localStorage.getItem("quizScores") || "{}");
+
+    if (activeUser) {
+      if (!allScores[activeUser]) {
+        allScores[activeUser] = [];
+      }
+      allScores[activeUser].push(finalScore);
+      localStorage.setItem("quizScores", JSON.stringify(allScores));
+    }
+
+    Object.keys(openScores).forEach(key => {
+      localStorage.setItem(key, openScores[key]);
+    });
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.innerHTML = `<h3>Your Total Score: ${finalScore}/10</h3>`;
+    feedback.forEach(line => {
+      const p = document.createElement("p");
+      p.textContent = line;
+      resultBox.appendChild(p);
+    });
+
+    document.getElementById("blurOverlay").style.display = "block";
+    document.getElementById("resultOverlay").style.display = "block";
+  }
+</script>
+</body>
+</html>

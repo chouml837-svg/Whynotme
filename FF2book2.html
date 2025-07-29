@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book</title>
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #fffbe7;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.story-container {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.book-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.book-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.clickable-word {
+  cursor: pointer;
+  border-bottom: 1px dotted #888;
+  color: inherit;
+}
+
+.clickable-word:hover {
+  background-color: #ffefc1;
+}
+
+.popup {
+  position: absolute; 
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  max-width: 220px;
+  display: none;
+}
+
+.popup-close {
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+  margin-bottom: 5px;
+}
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+.back-button button {
+  background-color: #d2b48c; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.back-button button:hover {
+  background-color: #c19a6b;
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+
+.toast.show {
+  animation: slideDown 0.5s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="story-container">
+  <div class="book-title">The Small Key</div>
+<br>
+<b><p id="story-text-1">It was very warm. The sun, up above a sky that was blue and tremendous and beckoning to birds ever on the wing, shone bright as if determined to scorch everything under heaven, even the low, square nipa house that stood in an unashamed relief against the gray-green haze of grass and leaves.
+</p>
+
+<p id="story-text-2">It was lonely dwelling located far from its neighbors,
+which were huddled close to one another as if for mutual comfort. It was flanked
+on both sides by tall, slender bamboo tree which rustled plaintively under a
+gentle wind.</p>
+
+<p id="story-text-3">On the porch a woman past her early twenties stood
+regarding the scene before her with eyes made incurious by its familiarity. All
+around her the land stretched endlessly, it seemed, and vanished into the
+distance. There were dark, newly plowed furrows where in due time timorous
+seedling would give rise to sturdy stalks and golden grain, to a rippling yellow
+sea in the wind and sun during harvest time. Promise of plenty and reward for
+hard toil! With a sigh of discontent, however, the woman turned and entered a
+small dining room where a man sat over a belated a midday meal.</p>
+
+<p id="story-text-4">Pedro Buhay, a prosperous farmer, looked up from his plate
+and smiled at his wife as she stood framed by the doorway, the sunlight glinting
+on her dark hair, which was drawn back, without relenting wave, from a rather
+prominent and austere brow.</p>
+
+<p id="story-text-5">“Where are the shirts I ironed yesterday?” she asked as she
+approached the table.</p>
+
+<p id="story-text-6">“In my trunk, I think,” he answered.</p>
+
+<p id="story-text-7">“Some of them need darning,” and observing the empty plate,
+she added, “do you want some more rice? No,” hastily, “I am in a burry to get
+back. We must finish plowing the south field today because tomorrow is
+Sunday.”</p>
+
+<p id="story-text-8">Pedro pushed the chair back and stood up. Soledad began to
+pile the dirty dishes one on top of the other.</p>
+
+<p id="story-text-9">“Here is the key to my trunk.” From the pocket of his khaki
+coat he pulled a string of non descript red which held together a big shiny key
+and another small, rather rusty looking one. With deliberate care he untied the
+knot and, detaching the big key, dropped the small one back into his pocket. She
+watched him fixedly as he did this. The smile left her face and a strange look
+came into her eyes as she took the big key from him without a word. Together
+they left the dining room.</p>
+
+<p id="story-text-10">Out of the porch he put an arm around her shoulders and
+peered into her shadowed face. </p>
+
+<p id="story-text-11">“You look pale and tired,” he remarked softly. “What have you been doing all morning?”
+</p>
+
+<p id="story-text-12">“Nothing,” she said listlessly. “But the heat gives me a headache.”
+</p>
+
+<p id="story-text-13">“Then lie down and try to sleep while I am gone.” For a
+moment they looked deep into each other’s eyes.</p>
+
+<p id="story-text-14">“It is really warm,” he continued. “I think I will take
+off my coat.”</p>
+
+<p id="story-text-15">He removed the garment absent mindedly and handed it to
+her. The stairs creaked under his weight as he went down.“Choleng,” he turned
+his head as he opened the gate, “I shall pass by Tia Maria’s house and tell her
+to come. I may not return before dark.”Soledad nodded. Her eyes followed her
+husband down the road, noting the fine set of his head and shoulders, the case
+of his stride. A strange ache rose in her throat.</p>
+
+<p id="story-text-16">She looked at the coat he had handed to her. It exuded a
+faint smell of his favorite cigars, one of which he invariably smoked, after the
+day’s work, on his way home from the field.Mechanically she began to fold the
+garment.</p>
+
+<p id="story-text-17">As she was doing so, s small object fell from the floor
+with a dull, metallic sound. Soledad stooped down to pick it up. It was the
+small key! She stared at it in her palm as if she had never seen it before. Her
+mouth was tightly drawn and for a while she looked almost old.She passed into
+the small bedroom and tossed the coat carelessly on the back of a chair. She
+opened the window and the early afternoon sunshine flooded in. On a mat spread
+on the bamboo floor were some newly washed garments.She began to fold them one
+by one in feverish haste, as if seeking in the task of the moment in refuge from
+painful thoughts. But her eyes moved restlessly around the room until they
+rested almost furtively on a small trunk that was half concealed by a rolled mat
+in a dark corner.</p>
+
+<p id="story-text-18">It was a small old trunk, without anything on the outside
+that might arouse one’s curiosity. But it held the things she had come to hate
+with unreasoning violence, the things that were causing her so much unnecessary
+anguish and pain and threatened to destroy all that was most beautiful between
+her and her husband! Soledad came across a torn garment. She threaded a needle,
+but after a few uneven stitches she pricked her finger and a crimson drop
+stained the whitegarment. Then she saw she had been mending on the wrong
+side.</p>
+
+<p id="story-text-19">“What is the matter with me?” she asked herself aloud as she pulled the thread with nervous and impatient fingers. What did it matter if her husband chose to keep the clothes of his first wife?</p>
+
+<p id="story-text-20">“She is dead anyhow. She is dead,” she repeated to herself
+over and over again.The sound of her own voice calmed her. She tried to thread
+the needle once more. But she could not, not for the tears had come unbidden and
+completely blinded her.</p>
+
+<p id="story-text-21">“My God,” she cried with a sob, “make me forget Indo’s
+face as he put the small key back into his pocket.She brushed her tears with the
+sleeves of her camisa and abruptly stood up. The heat was stifling, and the
+silence in the house was beginning to be unendurable.</p>
+
+<p id="story-text-22">She looked out of the window. She wondered what was
+keeping Tia Maria. Perhaps Pedro had forgotten to pass by her house in his
+hurry. She could picture him out there in the south field gazing far and wide at
+the newly plowed land with no thought in his mind but of work, work. For to the
+people of the barrio whose patron saint, San Isidro Labrador, smiled on them
+with benign eyes from his crude altar in the little chapel up the hill, this
+season was a prolonged hour during which they were blind and dead to everything
+but the demands of the land.</p>
+
+<p id="story-text-23">During the next half hour Soledad wandered in and out of
+the rooms in effort to seek escape from her own thoughts and to fight down an
+overpowering impulse. If Tia Maria would only come and talk to her to divert her
+thoughts to other channels! But the expression on her husband’s face as he put
+the small key back into his pocket kept torturing her like a nightmare, goading
+beyond endurance. Then, with all resistance to the impulse gone, she was
+kneeling before the small trunk. With the long drawn breath she inserted the
+small key. There was an unpleasant metallic sound, for the key had not been used
+for a long time and it was rusty.</p>
+
+<p id="story-text-24">That evening Pedro Buhay hurried home with the usual cigar
+dangling from his mouth, pleased with himself and the tenants because the work
+in the south field had been finished. Tia Maria met him at the gate and told him
+that Soledad was in bed with a fever.</p>
+
+<p id="story-text-25">“I shall go to town and bring Doctor Santos,” he decided,
+his cool hand on his wife’s brow.Soledad opened her eyes.</p>
+
+<p id="story-text-26">“Don’t, Indo,” she begged with a vague terror in her eyes
+which he took for anxiety for him because the town was pretty far and the road
+was dark and deserted by that hour of the night. “I shall be alright tomorrow.”
+Pedro returned an hour later, very tired and very worried. The doctor was not at
+home but his wife had promised to give him Pedro’s message as soon as he came
+in.</p>
+
+<p id="story-text-27">Tia Maria decide to remain for the night. But it was Pedro
+who stayed up to watchthe sick woman. He was puzzled and worried – more than he
+cared to admit it. It was true that Soledad did not looked very well early that
+afternoon. Yet,he thought, the fever was rather sudden. He was afraid it might
+be a symptom of a serious illness.Soledad was restless the whole night. She
+tossed from one side to another, but toward morningshe fell into some sort of
+troubled sleep. Pedro then lay down to snatch a few winks.</p>
+
+<p id="story-text-28">He woke up to find the soft morning sunshine streaming through the half-open window. He got up without making any noise. His wife was still asleep and now breathing evenly. A sudden rush of tenderness came over him at the sight of her – so slight, so frail. Tia Maria was nowhere to be seen, but that did not bother him, for it was Sunday and the work in the south field was finished. However, he missed the pleasant aroma which came from the kitchen every time he had awakened early in the morning.
+</p>
+
+<p id="story-text-29">The kitchen was neat but cheerless, and an immediate
+search for wood brought no results. So shouldering an ax, Pedro descended the
+rickety stairs that led to the backyard.The morning was clear and the breeze
+soft and cool. Pedro took in a deep breath of air. It wasgood – it smelt of
+trees, of the ricefields, of the land he loved.</p>
+
+<p id="story-text-30">He found a pile of logs under the young mango tree near
+the house and began to chop. He swung the ax with rapid clean sweeps, enjoying
+the feel of the smooth wooden handle in his palms.As he stopped for a while to
+mop his brow, his eyes caught the remnants of a smudge that had been built in
+the backyard.</p>
+
+<p id="story-text-31">“Ah!” he muttered to himself. “She swept the yard
+yesterday after I left her.That, coupled with the heat, must have given her a
+headache and then the fever."The morning breeze stirred the ashes and a piece of
+white cloth fluttered into view.</p>
+
+<p id="story-text-32">Pedro dropped his ax. It was a half-burn panuelo. Somebody had been burning clothes. He examined the slightly ruined garment closely. A puzzled expression came into his eyes. First it was doubt groping for truth, then amazement, and finally agonized incredulity passed across his face. He almost ran back to the house. In three strides he was upstairs. He found his coat hanging from the back of a chair.
+</p>
+
+<p id="story-text-33">Cautiously he entered the room. The heavy breathing of his
+wife told him that she was still asleep. As he stood by the small trunk, a vague
+distaste to open it assailed to him. Surely he must be mistaken. She could not
+have done it, she could not have been that… that foolish.Resolutely he opened
+the trunk. It was empty.</p>
+
+<p id="story-text-34">It was nearly noon when the doctor arrived. He felt
+Soledad’s pulse and asked question which she answered in monosyllables. Pedro
+stood by listening to the whole procedure with an inscrutable expression on his
+face. He had the same expression when the doctor told him that nothing was
+really wrong with his wife although she seemed to be worried about something.
+The physician merely prescribed a day of complete rest.</p>
+
+<p id="story-text-35">Pedro lingered on the porch after the doctor left. He was trying not to be angry
+with his wife. He hoped it would be just an interlude that could be recalled
+without bitterness. She would explain sooner or later, she would be repentant,
+perhaps she would even listen and eventually forgive her, for she was young and
+he loved her. But somehow he knew that this incident would always remain a
+shadow in their lives.</p></b>
+
+<p id="story-text-36"></p>
+
+<p id="story-text-37"></p>
+
+<p id="story-text-38"></p>
+
+<p id="story-text-39"></p>
+
+<p id="story-text-40"></p>
+
+<p id="story-text-41"></p>
+
+<p id="story-text-42"></p>
+
+<p id="story-text-43"></p>
+
+<p id="story-text-44"></p>
+
+<p id="story-text-45"></p>
+
+<p id="story-text-46"></p>
+
+<p id="story-text-47"></p>
+
+<p id="story-text-48"></p>
+
+<p id="story-text-49"></p>
+
+<p id="story-text-50"></p>
+
+<p id="story-text-51"></p>
+
+<p id="story-text-52"></p>
+
+<p id="story-text-53"></p>
+
+<p id="story-text-54"></p>
+
+<p id="story-text-55"></p>
+
+<p id="story-text-56"></p>
+
+<p id="story-text-57"></p>
+
+<p id="story-text-58"></p>
+
+<p id="story-text-59"></p>
+
+<p id="story-text-60"></p>
+
+<p id="story-text-61"></p>
+
+<p id="story-text-62"></p>
+
+<p id="story-text-63"></p>
+<p id="story-text-64"></p>
+<p id="story-text-65"></p>
+<p id="story-text-66"></p>
+<p id="story-text-67"></p>
+<p id="story-text-68"></p>
+<p id="story-text-69"></p>
+<p id="story-text-70"></p>
+<p id="story-text-71"></p>
+<p id="story-text-72"></p>
+<p id="story-text-73"></p>
+<p id="story-text-74"></p>
+<p id="story-text-75"></p>
+<p id="story-text-76"></p>
+<p id="story-text-77"></p>
+<p id="story-text-78"></p>
+<p id="story-text-79"></p>
+<p id="story-text-80"></p>
+<p id="story-text-81"></p>
+<p id="story-text-82"></p>
+<p id="story-text-83"></p>
+<p id="story-text-84"></p>
+<p id="story-text-85"></p>
+<p id="story-text-86"></p>
+<p id="story-text-87"></p>
+<p id="story-text-88"></p>
+<p id="story-text-89"></p>
+<p id="story-text-90"></p>
+<p id="story-text-91"></p>
+<p id="story-text-92"></p>
+<p id="story-text-93"></p>
+<p id="story-text-94"></p>
+<p id="story-text-95"></p>
+<p id="story-text-96"></p>
+<p id="story-text-97"></p>
+<p id="story-text-98"></p>
+<p id="story-text-99"></p>
+<p id="story-text-100"></p>
+</p>
+</div>
+
+<div id="toast" class="toast">Book recorded</div>
+
+<div id="popup" class="popup" style="display: none;">
+  <div class="popup-close" onclick="closePopup()">×</div>
+  <div id="popup-text">Loading...</div>
+</div>
+
+<div class="back-button">
+  <button onclick="window.location.href='file2.html'">← Back</button>
+</div>
+
+<script>
+  const title = "The Small Key";
+  const image = "key.jpeg";
+  const start = Date.now();
+  const activeUser = localStorage.getItem("activeUser");
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let i = 1; i <= 100; i++) {
+      const storyEl = document.getElementById(`story-text-${i}`);
+      if (!storyEl) continue;
+
+      const originalText = storyEl.innerText;
+
+      function makeWordsClickable(text) {
+        return text.split(/(\s+)/).map(word => {
+          if (word.trim() === "") return word;
+          const clean = word.replace(/[.,!?":;()]/g, "");
+          return `<span class="clickable-word" data-word="${clean}">${word}</span>`;
+        }).join("");
+      }
+
+      storyEl.innerHTML = makeWordsClickable(originalText);
+    }
+
+    document.querySelectorAll(".clickable-word").forEach(word => {
+      word.addEventListener("click", async (e) => {
+        const rawWord = e.target.dataset.word.toLowerCase();
+        const popup = document.getElementById("popup");
+        const popupText = document.getElementById("popup-text");
+
+        popupText.textContent = `Searching "${rawWord}"...`;
+        popup.style.display = "block";
+
+        const popupWidth = popup.offsetWidth;
+        const pageX = e.pageX;
+        const pageY = e.pageY - 60;
+
+        if (pageX + popupWidth > window.innerWidth) {
+          popup.style.left = `${window.innerWidth - popupWidth - 10}px`;
+        } else {
+          popup.style.left = `${pageX}px`;
+        }
+
+        if (window.innerWidth < 400) {
+          popup.style.left = "10px";
+          popup.style.right = "10px";
+        }
+
+        popup.style.top = `${pageY}px`;
+
+        try {
+          const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${rawWord}`);
+          const data = await res.json();
+
+          if (Array.isArray(data)) {
+            const meaning = data[0]?.meanings[0]?.definitions[0]?.definition;
+            popupText.textContent = `"${rawWord}" means: ${meaning}`;
+          } else {
+            popupText.textContent = `No definition found for "${rawWord}".`;
+          }
+        } catch (error) {
+          popupText.textContent = `Error getting meaning.`;
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const popup = document.getElementById("popup");
+      if (!popup.contains(e.target) && !e.target.classList.contains("clickable-word")) {
+        popup.style.display = "none";
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.getElementById("popup").style.display = "none";
+      }
+    });
+  });
+
+  setTimeout(() => {
+    const timeSpent = Date.now() - start;
+
+    if (timeSpent >= 20000 && activeUser && users[activeUser]) {
+      const userData = users[activeUser];
+      userData.booksRead = userData.booksRead || [];
+
+      const alreadyExists = userData.booksRead.some(book => book.title === title);
+      if (!alreadyExists) {
+        userData.booksRead.push({ title, image: image });
+        users[activeUser] = userData;
+        localStorage.setItem("users", JSON.stringify(users));
+
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        toast.style.opacity = "1";
+
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          setTimeout(() => {
+            toast.style.display = "none";
+            toast.style.opacity = "1";
+          }, 1000);
+        }, 3000);
+      }
+    }
+  }, 20000);
+
+  window.addEventListener("beforeunload", () => {
+    const end = Date.now();
+    const readingTime = end - start;
+
+    if (activeUser && users[activeUser]) {
+      users[activeUser].totalReadingTime = (users[activeUser].totalReadingTime || 0) + readingTime;
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  });
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>- DEADSTARS</title>
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #fffbe7;
+  padding: 20px;
+  line-height: 1.6;
+}
+.story-container {
+  max-width: 600px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.book-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.book-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.clickable-word {
+  cursor: pointer;
+  border-bottom: 1px dotted #888;
+  color: inherit;
+}
+
+.clickable-word:hover {
+  background-color: #ffefc1;
+}
+
+.popup {
+  position: absolute; 
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  max-width: 220px;
+  display: none;
+}
+
+.popup-close {
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+  margin-bottom: 5px;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+.back-button button {
+  background-color: #d2b48c; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.back-button button:hover {
+  background-color: #c19a6b;
+}
+.toast.show {
+  animation: slideDown 0.5s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="story-container">
+  <div class="book-title">DEADSTARS<br>byPazMarquezBenitez</div>
+<br>
+  <b><p id="story-text-1">
+    Through the open window the air-steeped outdoors passed into his room,
+    quietly enveloping him, stealing into his very thought. Esperanza, Julia,the
+    sorry mess he had made of life, the years to come even now beginning to
+    weigh down, to crush–they lost concreteness, diffused into formless
+    melancholy. The tranquil murmur of conversation issued from the brick-tiled
+    azotea where Don Julian and Carmen were busy puttering away among the rose
+    pots.
+    
+<p id="story-text-2">“Papa, and when will the ‘long table’ be set?”</p></b>
+ <b>
+<p id="story-text-3">“I don’t know yet. Alfredo is not very specific, but I understand Esperanza wants it to be next month.”<p/>
+
+<p id="story-text-4">Carmen sighed impatiently. “Why is he not a bit more decided, I wonder. He is
+over thirty, is he not? And still a bachelor! Esperanza must be tired
+waiting.”</p>
+
+<p id="story-text-5">“She does not seem to be in much of a hurry either,” Don Julian nasally
+commented, while his rose scissors busily snipped away.</p>
+
+<p id="story-text-6">“How can a woman be in a hurry when the man does not hurry her?” Carmen
+returned, pinching off a worm with a careful, somewhat absent air. “Papa, do you
+remember how much in love he was</p>
+
+<p id="story-text-7">“In love? With whom?”</p>
+
+<p id="story-text-8">“With Esperanza, of course. He has not had another love affair that I know
+of,” she said with good-natured contempt. “What I mean is that at the beginning
+he was enthusiastic–flowers, serenades, notes, and things like that–”</p>
+
+<p id="story-text-9">Alfredo remembered that period with a wonder not unmixed with shame. That was less than four years ago. He could not understand those months of a great hunger that was not of the body nor yet of the mind, a craving that had seized on him one quiet night when the moon was abroad and under the dappled shadow of the trees in the plaza, man wooed maid. Was he being cheated by life? Love-he seemed to have missed it. Or was the love that others told about a mere fabrication of perfervid imagination, an exaggeration of the commonplace, a glorification of insipid monotonies such as made up his love life? Was love a combination of circumstances, or sheer native capacity of the soul? In those days love was, for him, still the eternal puzzle; for love, as he knew it, was a stranger to love as he divined it might be.
+</p>
+
+<p id="story-text-10">Sitting quietly in his room now, he could almost revive the restlessness of
+those days, the feeling of tumultuous haste, such as he knew so well in his
+boyhood when something beautiful was going on somewhere and he was trying to get
+there in time to see. “Hurry, hurry, or you will miss it,” someone had seemed to
+urge in his ears. So, he had avidly seized on the shadow of Love and deluded
+himself for a long while in the way of humanity from time immemorial. In the
+meantime, he became very much engaged to Esperanza.</p>
+
+<p id="story-text-11">Why would men so mismanage their lives? Greed, he thought, was what ruined so
+many. Greed–the desire to crowd into a moment all the enjoyment it will hold, to
+squeeze from the hour all the emotion it will yield. Men commit themselves when
+but half-meaning to do so, sacrificing possible future fullness of ecstasy to
+the craving for immediate excitement. Greed–mortgaging the future–forcing the
+hand of Time, or of Fate.</p>
+
+<p id="story-text-12">“What do you think happened?” asked Carmen, pursuing her thought.</p>
+
+<p id="story-text-13">“I supposed long-engaged people are like that; warm now, cool tomorrow. I
+think they are oftener cool than warm. The very fact that an engagement has been
+allowed to prolong itself argues a certain placidity of temperament–or of
+affection–on the part of either, or both.” Don Julian loved to philosophize. He
+was talking now with an evident relish in words, his resonant, very nasal voice
+toned down to monologue pitch. “That phase you were speaking of is natural
+enough for a beginning. Besides, that, as I see it, was Alfredo’s last race with
+escaping youth–”</p>
+
+<p id="story-text-14">Carmen laughed aloud at the thought of her brother’s perfect physical
+repose–almost indolence-disturbed in the role suggested by her father’s
+figurative language.</p>
+
+<p id="story-text-15">“A last spurt of hot blood,” finished the old man.</p>
+
+<p id="story-text-16">Few certainly would credit Alfredo Salazar with hot blood. Even his friends
+had amusedly diagnosed his blood as cool and thin, citing incontrovertible
+evidence. Tall and slender, he moved with an indolent ease that verged on grace.
+Under straight recalcitrant hair, a thin face with a satisfying breadth of
+forehead, slow, dreamer’s eyes, and astonishing freshness of lips–indeed Alfredo
+Salazar’s appearance betokened little of exuberant masculinity; rather a poet
+with wayward humor, a fastidious artist with keen, clear brain.</p>
+
+<p id="story-text-17">He rose and quietly went out of the house. He lingered a moment on the stone
+steps; then went down the path shaded by immature acacias, through the little
+tarred gate which he left swinging back and forth, now opening, now closing, on
+the gravel road bordered along the farther side by madre cacao hedge in tardy
+lavender bloom.</p>
+
+<p id="story-text-18">The gravel road narrowed as it slanted up to the house on the hill, whose wide, open porches he could glimpse through the heat-shriveled tamarinds in the Martinez yard.
+</p>
+
+<p id="story-text-19">Six weeks ago, that house meant nothing</p>
+
+<p id="story-text-20">nothing to him save that it was the Martinez house, rented and occupied by
+Judge del Valle and his family. Six weeks ago, Julia Salas meant nothing to him;
+he did not even know her name; but now–</p>
+
+<p id="story-text-21">One evening he had gone “neighboring” with Don Julian; a rare enough
+occurrence, since he made it a point to avoid all appearance of currying favor
+with the Judge. This particular evening however, he had allowed himself to be
+persuaded. “A little mental relaxation now and then is beneficial,” the old man
+had said. “Besides, a judge’s good will, you know;” the rest of the thought–“is
+worth a rising young lawyer’s trouble”–Don Julian conveyed through a shrug and a
+smile that derided his own worldly wisdom.</p>
+
+<p id="story-text-22">A young woman had met them at the door. It was evident from the excitement of
+the Judge’s children that she was a recent and very welcome arrival. In the
+characteristic Filipino way formal introductions had been omitted–the judge
+limiting himself to a casual “Ah, ya se conocen?”–with the consequence that
+Alfredo called her Miss del Valle throughout the evening.</p>
+
+<p id="story-text-24">He was puzzled that she should smile with evident delight every time he addressed her thus. Later Don Julian informed him that she was not the Judge’s sister, as he had supposed, but his sister-in-law, and that her name was Julia Salas. A very dignified rather austere name, he thought. Still, the young lady should have corrected him. As it was, he was greatly embarrassed, and felt that he should explain.
+</p>
+
+<p id="story-text-25">To his apology, she replied, “That is nothing, each time I was about to
+correct you, but I remembered a similar experience I had once before.”</p>
+
+<p id="story-text-26">Oh,” he drawled out, vastly relieved.</p>
+
+<p id="story-text-27">“A man named Manalang–I kept calling him Manalo. After the tenth time or so,
+the young man rose from his seat and said suddenly, ‘Pardon me, but my name is
+Manalang, Manalang.’ You know, I never forgave him!”</p>
+
+<p id="story-text-28">He laughed with her.</p>
+
+<p id="story-text-29">“The best thing to do under the circumstances, I found out,” she pursued, “is
+to pretend not to hear, and to let the other person find out his mistake without
+help.”</p>
+
+<p id="story-text-30">“As you did this time. Still, you looked very amused every time I–”</p>
+
+<p id="story-text-31">“I was thinking of Mr. Manalang.”</p>
+
+<p id="story-text-32">Don Julian and his uncommunicative friend, the Judge, were absorbed in a game
+of chess. The young man had tired of playing appreciative spectator and
+desultory conversationalist, so he and Julia Salas had gone off to chat in the
+vine-covered porch. The lone piano in the neighborhood alternately tinkled and
+banged away as the player’s moods altered. He listened, and wondered
+irrelevantly if Miss Salas could sing; she had such a charming speaking
+voice.</p>
+
+<p id="story-text-33">He was mildly surprised to note from her appearance that she was unmistakably a sister of the Judge’s wife, although Doña Adela was of a different type altogether. She was small and plump, with wide brown eyes, clearly defined eyebrows, and delicately modeled hips–a pretty woman with the complexion of a baby and the expression of a likable cow. Julia was taller, not so obviously pretty. She had the same eyebrows and lips, but she was much darker, a smooth rich brown with underlying tones of crimson which heightened the impression she gave of abounding vitality.
+</p>
+
+<p id="story-text-34">On Sunday mornings after mass, father and son would go crunching up the
+gravel road to the house on the hill. The Judge’s wife invariably offered them
+beer, which Don Julian enjoyed and Alfredo did not. After a half hour or so, the
+chessboard would be brought out; then Alfredo and Julia Salas would go out to
+the porch to chat. She sat in the low hammock and he in a rocking chair and the
+hours–warm, quiet March hours–sped by. He enjoyed talking with her and it was
+evident that she liked his company; yet what feeling there was between them was
+so undisturbed that it seemed a matter of course. Only when Esperanza chanced to
+ask him indirectly about those visits did some uneasiness creep into his
+thoughts of the girl next door.</p>
+
+<p id="story-text-35">Esperanza had wanted to know if he went straight home after mass. Alfredo
+suddenly realized that for several Sundays now he had not waited for Esperanza
+to come out of the church as he had been wont to do. He had been eager to go
+“neighboring.”</p>
+
+<p id="story-text-36">He answered that he went home to work. And, because he was not habitually untruthful, added, “Sometimes I go with Papa to Judge del Valle’s.”
+</p>
+
+<p id="story-text-37">She dropped the topic. Esperanza was not prone to indulge in unprovoked
+jealousies. She was a believer in the regenerative virtue of institutions, in
+their power to regulate feeling as well as conduct. If a man were married, why,
+of course, he loved his wife; if he were engaged, he could not possibly love
+another woman.</p>
+
+<p id="story-text-38">That half-lie told him what he had not admitted openly to himself, that he
+was giving Julia Salas something which he was not free to give. He realized
+that; yet something that would not be denied beckoned imperiously, and he
+followed on.</p>
+
+<p id="story-text-39">It was so easy to forget up there, away from the prying eyes of the world, so easy and so poignantly sweet. The beloved
+</p>
+
+<p id="story-text-40">Gently–was it experimentally?–he pressed her hand at parting; but his own
+felt undisturbed and emotionless. Did she still care? The answer to the question
+hardly interested him.</p>
+
+<p id="story-text-41">The young moon had set, and from the uninviting cot he could see one half of
+a star-studded sky.</p>
+
+<p id="story-text-42">So that was all over.</p>
+
+<p id="story-text-43">Why, why had he obstinately clung to that dream? So, all these years–since
+when?–he had been seeing the light of dead stars, long extinguished, yet
+seemingly still in their appointed places in the heavens.</p>
+
+<p id="story-text-44">An immense sadness as of loss invaded his spirit, a vast homesickness for
+some immutable refuge of the heart far away where faded gardens bloom again, and
+where lives on in unchanging freshness, the dear, dead loves of vanished
+youth.</p>
+</b></p>
+
+<p id="story-text-45">© 2008-2025</p>
+</p>
+</div>
+
+<div id="toast" class="toast">Book recorded</div>
+
+<div id="popup" class="popup" style="display: none;">
+  <div class="popup-close" onclick="closePopup()">×</div>
+  <div id="popup-text">Loading...</div>
+</div>
+
+<div class="back-button">
+  <button onclick="window.location.href='file1.html'">← Back</button>
+</div>
+
+<script>
+  const title = "Deadstar";
+  const image = "deadstar.jpeg";
+  const start = Date.now();
+  const activeUser = localStorage.getItem("activeUser");
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let i = 1; i <= 100; i++) {
+      const storyEl = document.getElementById(`story-text-${i}`);
+      if (!storyEl) continue;
+
+      const originalText = storyEl.innerText;
+
+      function makeWordsClickable(text) {
+        return text.split(/(\s+)/).map(word => {
+          if (word.trim() === "") return word;
+          const clean = word.replace(/[.,!?":;()]/g, "");
+          return `<span class="clickable-word" data-word="${clean}">${word}</span>`;
+        }).join("");
+      }
+
+      storyEl.innerHTML = makeWordsClickable(originalText);
+    }
+
+    document.querySelectorAll(".clickable-word").forEach(word => {
+      word.addEventListener("click", async (e) => {
+        const rawWord = e.target.dataset.word.toLowerCase();
+        const popup = document.getElementById("popup");
+        const popupText = document.getElementById("popup-text");
+
+        popupText.textContent = `Searching "${rawWord}"...`;
+        popup.style.display = "block";
+
+        const popupWidth = popup.offsetWidth;
+        const pageX = e.pageX;
+        const pageY = e.pageY - 60;
+
+        if (pageX + popupWidth > window.innerWidth) {
+          popup.style.left = `${window.innerWidth - popupWidth - 10}px`;
+        } else {
+          popup.style.left = `${pageX}px`;
+        }
+
+        if (window.innerWidth < 400) {
+          popup.style.left = "10px";
+          popup.style.right = "10px";
+        }
+
+        popup.style.top = `${pageY}px`;
+
+        try {
+          const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${rawWord}`);
+          const data = await res.json();
+
+          if (Array.isArray(data)) {
+            const meaning = data[0]?.meanings[0]?.definitions[0]?.definition;
+            popupText.textContent = `"${rawWord}" means: ${meaning}`;
+          } else {
+            popupText.textContent = `No definition found for "${rawWord}".`;
+          }
+        } catch (error) {
+          popupText.textContent = `Error getting meaning.`;
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const popup = document.getElementById("popup");
+      if (!popup.contains(e.target) && !e.target.classList.contains("clickable-word")) {
+        popup.style.display = "none";
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.getElementById("popup").style.display = "none";
+      }
+    });
+  });
+
+  setTimeout(() => {
+    const timeSpent = Date.now() - start;
+
+    if (timeSpent >= 20000 && activeUser && users[activeUser]) {
+      const userData = users[activeUser];
+      userData.booksRead = userData.booksRead || [];
+
+      const alreadyExists = userData.booksRead.some(book => book.title === title);
+      if (!alreadyExists) {
+        userData.booksRead.push({ title, image: image });
+        users[activeUser] = userData;
+        localStorage.setItem("users", JSON.stringify(users));
+
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        toast.style.opacity = "1";
+
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          setTimeout(() => {
+            toast.style.display = "none";
+            toast.style.opacity = "1";
+          }, 1000);
+        }, 3000);
+      }
+    }
+  }, 20000);
+
+  window.addEventListener("beforeunload", () => {
+    const end = Date.now();
+    const readingTime = end - start;
+
+    if (activeUser && users[activeUser]) {
+      users[activeUser].totalReadingTime = (users[activeUser].totalReadingTime || 0) + readingTime;
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  });
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

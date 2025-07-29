@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select a Book</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d7b899;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .box {
+      width: 180px;
+      height: 230px;
+      background-color: #fff8e1;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+      background-color: #ffe082;
+    }
+
+    .box img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .box-title {
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 14px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-button {
+      margin-top: 40px;
+    }
+
+    .back-button button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background:  linear-gradient(to right, #795548, #d7b899);
+      color: white;
+      border:;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .back-button button:hover {
+      background-color: #d7b899;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select a Book</h1>
+
+  <div class="box-container">
+    <div class="box" onclick="location.href='F1book1.html'">
+      <img src="deadstar.jpeg" alt="Book 1">
+      <div class="box-title">Deadstar</div>
+    </div>
+    <div class="box" onclick="location.href='F2book2.html'">
+      <img src="necklace.jpeg" alt="Book 2">
+      <div class="box-title">The Necklace</div>
+    </div>
+    <div class="box" onclick="location.href='F3book3.html'">
+      <img src="book3.jpg" alt="Book 3">
+      <div class="box-title"></div>
+    </div>
+    <div class="box" onclick="location.href='F4book4.html'">
+      <img src="book4.jpg" alt="Book 4">
+      <div class="box-title"></div>
+    </div>
+  </div>
+
+  <div class="back-button">
+    <button onclick="history.back()">← Back</button>
+  </div>
+
+</body>
+</html>
